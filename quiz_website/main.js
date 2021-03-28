@@ -76,7 +76,7 @@ const data =
   }
 },
 {
-    "question": "Phew, a well deserved break after being barraged with these hard hitting catalyst questions. What is 0sin(x)xdx ?",
+    "question": "Phew, a well deserved break after being barraged with these hard hitting catalyst questions. What is 0∫∞ (sin x) dx?",
     "answer": "",
     "choices": [
         "pi / 2",
@@ -101,6 +101,23 @@ const data =
     "Took a Shit":"Josh should sign you as his manager this is a much better name"
   }
   
+},
+{
+    "question": "Congrats, you’ve gotten to the end of this quiz! Last question: What are you most looking forward to in Catalyst?",
+    "answer": "",
+    "choices": [
+        "Meeting more members!",
+        "Test banks :) jk but not really",
+        "Yung Josh’s new single",
+        "Being united with your big!"
+  ],
+  "messages": {
+    "Meeting more members!":"That's so cute!",
+    "Test banks :) jk but not really":"That's so cute!",
+    "Yung Josh’s new single": "That's so cute!",
+    "Being united with your big": "That's so cute!"
+  }
+  
 }]
 
 
@@ -113,41 +130,37 @@ const app = new Vue ({
             quizAnswers: {},
             questionData: {},
             messages: {
-                "How many cookies did you individually click?":[], 
-                "Did you ever have the privilege of being hazed by a catalyst member? *cough* herleen *cough*":[], 
-                "How many sigs have you finished so far?":[], 
-                "Who’s your favorite rush chair?":[], 
-                "What is Catalyst’s favorite table? (there is a correct answer)":[], 
-                "Phew, a well deserved break after being barraged with these hard hitting catalyst questions. What is 0sin(x)xdx ?":[], 
-                "What is Yung Josh’s debut song called?":[]
+                "How many cookies did you individually click?":{}, 
+                "Did you ever have the privilege of being hazed by a catalyst member? *cough* herleen *cough*":{}, 
+                "How many sigs have you finished so far?":{}, 
+                "Who’s your favorite rush chair?":{}, 
+                "What is Catalyst’s favorite table? (there is a correct answer)":{}, 
+                "Phew, a well deserved break after being barraged with these hard hitting catalyst questions. What is 0∫∞ (sin x) dx?":{}, 
+                "What is Yung Josh’s debut song called?":{}
             },
             styled: {
-                background: "lightblue"
+                background: "pink"
             },
-            quizList: ['Random Catalyst Stuff Yolo']
+            quizList: ['Catalyst NME']
         }
     },
 
     methods: {
-        // fetchData (quizKey) {
-        //     // fetch(`./data/quiz_${quizKey}.json`)
-        //     //     .then(response => response.json())
-        //     //     .then(data => {
-        //     //         this.showQuiz(data);
-        //     //     })
-        //     //     .catch(error => console.error(error));
-        //     // let data = require('./data/quiz_${quizKey}.json');
-        //     // this.showQuiz(data);
-        //     this.showQuiz(data);
-        // },
-
         toggleLinks () {
             this.quizName = null;
             this.reset();
             this.questionData = {};
-            this.styled['background'] = 'green';
+            this.styled['background'] = 'pink';
             this.quizAnswers = {};
-            this.messages = [];
+            this.messages = {
+                "How many cookies did you individually click?":{}, 
+                "Did you ever have the privilege of being hazed by a catalyst member? *cough* herleen *cough*":{}, 
+                "How many sigs have you finished so far?":{}, 
+                "Who’s your favorite rush chair?":{}, 
+                "What is Catalyst’s favorite table? (there is a correct answer)":{}, 
+                "Phew, a well deserved break after being barraged with these hard hitting catalyst questions. What is 0∫∞ (sin x) dx?":{}, 
+                "What is Yung Josh’s debut song called?":{}
+            };
         },
 
         toMap (jsondata) {
@@ -167,25 +180,14 @@ const app = new Vue ({
         },
         
         diffStyles () {
-            if (this.quizName == 'basketball') {
-                this.styled['background'] = '#f18f0e';
-            } else if (this.quizName == 'marvel') {
-                this.styled['background'] = '#f70810';
-            } else if (this.quizName == 'elements') {
-                this.styled['background'] = '#3e4ac1';
-            }
-            // this.fetchData(this.quizName);
             this.showQuiz(data);
-            // this.showQuiz(Marvel);
         },
 
         getMessages() {
             let i = 0;
             for (var m in this.questionData) {
-                if (this.questionData[m].messages) {
-                    this.messages[i] = this.questionData[m].messages;
-                    i+=1;
-                }
+                this.messages[m] = this.questionData[m].messages;
+                i+=1;
             }
             console.log(this.messages);
         },
@@ -199,9 +201,6 @@ const app = new Vue ({
                 window.alert('You must answer all questions first.');
                 return;
             }
-
-            // otherwise report results for user to see
-            this.reportResults(numCorrect, Object.keys(this.questionData).length);
         },
 
         // reset quiz to its original state so it can be taken again
@@ -223,23 +222,7 @@ const app = new Vue ({
                 li.classList.remove('correct', 'incorrect');
             }
         },
-
-
-        // useful function to returns user's selected answer
-        getChoice (name) {
-            let element = document.querySelector(`input[name="${name}"]:checked`);
-            if (element == null) {
-                return -1;
-            } else {
-                return element.value;
-            }
-        },
-
-        // utility function to make code more readable
-        getCorrectAnswer (name) {
-            return this.quizAnswers[name];
-        },
-
+        
         // check how many answers match correct ones
         countCorrectAnswers () {
             let numCorrect = 0;
@@ -255,8 +238,9 @@ const app = new Vue ({
                     }
                     this.highlightResponse(question.question, choice, question.answer);
                 }
+                this.displayMessage(quest);
             });
-            this.displayMessage();
+            
             return numCorrect;
         },
 
@@ -273,35 +257,12 @@ const app = new Vue ({
             });
         },
 
-        // show percent correct
-        reportResults (numCorrect, total) {
-            let pct = Math.round(numCorrect * 100 / total);
-            document.getElementById('result').innerHTML = `You got ${pct}% correct`;
-            let mess = "";
-            //this.getMessages();
-            // if (pct == 100) {
-            //     mess = this.messages[2];
-            // } else if (pct > 40) {
-            //     mess = this.messages[1];
-            // } else {
-            //     mess = this.messages[0];
-            // }
+        displayMessage (quest) {
+            let question  = this.questionData[quest];
+            let pick = question.trueChoice;
+            let mess = this.messages[quest][pick];
             
-
-            // get it to print after every question answered rather than
-            // all at once at the end
-            document.getElementById('message').innerHTML = mess;
-        },
-
-        displayMessage () {
-            Object.keys(this.questionData).forEach(quest => {
-                let question  = this.questionData[quest];
-                let pick = question.trueChoice;
-                for (var m in this.messages[quest]) {
-                    document.getElementById('indyMessage').innerHTML += m[pick] + '<br>';
-                }
-            });
-            
+            document.getElementById('result').innerHTML = mess + '<br>';
         }
         
     },

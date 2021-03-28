@@ -6,6 +6,13 @@ h2 {
     text-align: center;
 }
 
+header h1 {
+    -webkit-text-stroke: 2.5px pink;
+    font-family: sans-serif;
+    font-size: 65px;
+    color: white;
+}
+
 #title {
     -webkit-text-stroke: 1.5px black;
     font-family: sans-serif;
@@ -18,7 +25,7 @@ h2 {
 }
 
 body {
-    background-color: #0b151b2c;
+    background-color: lightblue;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -33,7 +40,7 @@ footer {
 }
 
 .incorrect {
-    background-color: palevioletred;
+    background-color: lightblue;
 }
 
 .bubble {
@@ -43,7 +50,7 @@ footer {
 }
 
 .res {
-    background-color: pink;
+    background-color: lightblue;
     padding: 5px;
     text-align: center;
 }
@@ -54,7 +61,7 @@ footer {
 
 #app {
     border: 4px solid black;
-    background-color: rgba(200, 206, 218, 0.685);
+    background-color: white;
     width: 65%;
     margin: auto;
     padding: 10px 20px 30px 10px;
@@ -107,3 +114,27 @@ a {
     display: inline-block;
     text-align: center;
 }
+
+
+.typewriter p {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid rgb(255, 255, 255); /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(255, 255, 255); }
+  }

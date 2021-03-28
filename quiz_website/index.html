@@ -19,26 +19,29 @@
 </head>
 <body>
 
-    <header>
-        
+    <header id="bruh">
+        <h1>Hackalyst 2021</h1>
     </header>
     <hr>
 
-    <h2>Try your hand at some quizzes I made!</h2>
+    <h2>Check out this sweet quiz :)</h2>
 
     <div id="app">
-        <p v-if="quizName==null">Please choose a quiz based on your interests!</p>
+        <p v-if="quizName==null">Please choose a quiz! I planned to have more but don't lolz sorry
+        </p>
         <select v-model="quizName">
             <option v-for="choice in quizList">{{choice}}</option>
         </select>
 
         <div v-if="quizName" :style="styled">
             <div id="title">
-                <h1>{{quizName}} quiz</h1>
+                <h1>{{quizName}} Quiz</h1>
             </div>
 
-            <div id="result" class="res">
-                <!-- blah -->
+            <div class="res">
+                <p id="result" class="typewriter">
+                    <!-- blah -->
+                </p>
             </div>
 
             <div id="message" class="res">
@@ -76,24 +79,12 @@
     
     <hr/>
     <footer>
-      This website is the sole property of Logan Taylor.
+      This website is the sole property of Catalyst Group 5, the coolest group.
     
       <br>
-      2021, Duke University, ltg6@duke.edu
+      Duke University, 2021
       <br>
-      <a href = "https://www.linkedin.com/in/taylorlogan1">
-        <img src = "https://content.linkedin.com/content/dam/me/brand/en-us/brand-home/logos/In-Blue-Logo.png.original.png"
-            alt = "LinkedIn logo"
-            align = "center"
-            width = "30"
-            height = "30"></a>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-        <img src="https://i.creativecommons.org/l/by/4.0/88x31.png"
-            alt="Creative Commons License"
-            style="border-width:0"></a>
     </footer>
-    <h6 class="logos">LinkedIn logo used with permission from <a href = "https://brand.linkedin.com/policies">LinkedIn Branding Policies</a> section III.<br>
-        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</h6>
     
     
 </body>
