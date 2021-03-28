@@ -91,7 +91,7 @@ const data =
 },
 {
     "question": "What is Yung Josh’s debut song called?",
-    "answer": "Took a Shit",
+    "answer": "",
     "choices": [
         "Made a Hit",
         "Took a Shit"
@@ -113,9 +113,9 @@ const data =
   ],
   "messages": {
     "Meeting more members!":"That's so cute!",
-    "Test banks :) jk but not really":"That's so cute!",
-    "Yung Josh’s new single": "That's so cute!",
-    "Being united with your big": "That's so cute!"
+    "Test banks :) jk but not really":"Bruh",
+    "Yung Josh’s new single": "Stop cappin",
+    "Being united with your big": "Awwwww adorable"
   }
   
 }]
