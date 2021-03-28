@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- always put your name in your work -->
+    <meta name="author" content="Logan Taylor">
+    <!-- always label your name with a title -->
+    <title>Hackalyst Buzzfeed Quiz Knockoff</title>
+    <!-- scale page to fit entire screen, so it properly fills non-desktop devices -->    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- DEV-only for easier refreshing: stop the web browser from ever caching this page or its images -->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!-- style for this page -->
+    <link rel="stylesheet" href="style.css">
+    <!-- interaction for this page, defer loading until after page to allw access to DOM elements -->
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+
+    <header>
+        
+    </header>
+    <hr>
+
+    <h2>Try your hand at some quizzes I made!</h2>
+
+    <div id="app">
+        <p v-if="quizName==null">Please choose a quiz based on your interests!</p>
+        <select v-model="quizName">
+            <option v-for="choice in quizList">{{choice}}</option>
+        </select>
+
+        <div v-if="quizName" :style="styled">
+            <div id="title">
+                <h1>{{quizName}} quiz</h1>
+            </div>
+
+            <div id="result" class="res">
+                <!-- blah -->
+            </div>
+
+            <div id="message" class="res">
+                <!-- blah -->
+            </div>
+
+            <div id="questions">
+                <ol>
+                    <!-- remember to store json data in 'questionData'
+                    so you can access it -->
+                    <li v-for="element in questionData">
+                        <p>{{element.question}}</p>
+                        <ul class="bubble" :id="element.question">
+                            <li v-for="choice in element.choices">
+                                <input type="radio" :value="choice" :name="element.question" v-model="element.trueChoice"> {{choice}}
+                            </li>
+                        </ul>
+                        <p id="indyMessage"></p>
+                    </li>
+                </ol>
+                <!-- blah -->
+            </div>
+        </div>
+        <br>
+        <button @click="toggleLinks()" style="float: right;">Reset</button>
+        <button @click="processAnswers()" style="float: right;">Submit</button>
+    </div>
+
+
+
+
+
+
+
+    
+    <hr/>
+    <footer>
+      This website is the sole property of Logan Taylor.
+    
+      <br>
+      2021, Duke University, ltg6@duke.edu
+      <br>
+      <a href = "https://www.linkedin.com/in/taylorlogan1">
+        <img src = "https://content.linkedin.com/content/dam/me/brand/en-us/brand-home/logos/In-Blue-Logo.png.original.png"
+            alt = "LinkedIn logo"
+            align = "center"
+            width = "30"
+            height = "30"></a>
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img src="https://i.creativecommons.org/l/by/4.0/88x31.png"
+            alt="Creative Commons License"
+            style="border-width:0"></a>
+    </footer>
+    <h6 class="logos">LinkedIn logo used with permission from <a href = "https://brand.linkedin.com/policies">LinkedIn Branding Policies</a> section III.<br>
+        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</h6>
+    
+    
+</body>
+</html>

@@ -1,0 +1,109 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+#title {
+    -webkit-text-stroke: 1.5px black;
+    font-family: sans-serif;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+}
+
+#questions {
+    box-shadow: 2px;
+}
+
+body {
+    background-color: #0b151b2c;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+footer {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 5px;
+}
+
+.correct {
+    background-color: springgreen;
+}
+
+.incorrect {
+    background-color: palevioletred;
+}
+
+.bubble {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.res {
+    background-color: pink;
+    padding: 5px;
+    text-align: center;
+}
+
+#questions {
+    padding: 5px;
+}
+
+#app {
+    border: 4px solid black;
+    background-color: rgba(200, 206, 218, 0.685);
+    width: 65%;
+    margin: auto;
+    padding: 10px 20px 30px 10px;
+}
+
+#navbar {
+    background-color: white transparent;
+    color: navy;
+}
+
+#navbar ul {
+    list-style: none;
+    text-align: center;
+}
+
+#navbar li {
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+}
+#navbar a {
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid transparent;
+    font-size: 17px;
+    margin: 9%;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+#navbar a:hover {
+    color: rgb(216, 145, 38);
+    border-bottom: 1px solid rgb(216, 145, 38);
+}
+
+#navbar a:active {
+    color: rgb(216, 145, 38);
+    border-bottom: 1px solid rgb(216, 145, 38);
+}
+
+.header2 li {
+    position: relative;
+    margin: 0;
+    width: 32%;
+    padding-top: 0%;
+    padding-left: 6px;
+    display: inline-block;
+    text-align: center;
+}
